@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA en la Educación - Ahorra Horas de Trabajo Docente</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: move 20s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-emoji {
+            font-size: 100px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .hero .description {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 20px 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 10px;
+        }
+        
+        .price-new {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #ffd700;
+        }
+        
+        /* PROBLEMA SECTION */
+        .problema {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #2d3748;
+        }
+        
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .problema-card {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .problema-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .problema-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        /* SOLUCION SECTION */
+        .solucion {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            padding: 80px 20px;
+            color: white;
+            text-align: center;
+        }
+        
+        .promesa-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 800px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .promesa-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .promesa-box p {
+            font-size: 1.3em;
+            line-height: 1.8;
+        }
+        
+        /* BENEFICIOS */
+        .beneficios {
+            background: white;
+            padding: 80px 20px;
+        }
+        
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .beneficio-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .beneficio-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .beneficio-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+        
+        .beneficio-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .beneficio-card p {
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        /* CONTENIDO */
+        .contenido {
+            background: #f7fafc;
+            padding: 80px 20px;
+        }
+        
+        .modulos {
+            display: grid;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .modulo {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .modulo:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateX(5px);
+        }
+        
+        .modulo-numero {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+        
+        .modulo h3 {
+            display: inline;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            color: #2d3748;
+        }
+        
+        .modulo p {
+            margin-top: 15px;
+            color: #718096;
+            margin-left: 55px;
+        }
+        
+        /* TESTIMONIOS */
+        .testimonios {
+            background: white;
+            padding: 80px 20px;
+        }
+        
+        .testimonio-card {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 700px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonio-texto {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonio-autor {
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        /* PRECIO Y CTA */
+        .precio {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .precio-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        .precio-principal {
+            font-size: 4em;
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .precio-descripcion {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .garantia {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+        
+        /* BONUS */
+        .bonus {
+            background: #2d3748;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .bonus-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .bonus-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: white;
+            padding: 80px 20px;
+        }
+        
+        .faq-item {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .faq-pregunta {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .faq-respuesta {
+            color: #718096;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        /* OTRAS GUÍAS */
+        .otras-guias {
+            background: #f7fafc;
+            padding: 80px 20px;
+        }
+        
+        .guias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .guia-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+        
+        .guia-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .guia-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .guia-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .guia-card p {
+            color: #718096;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .guia-precio {
+            font-size: 2em;
+            font-weight: 900;
+            color: #667eea;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+        
+        .guia-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .guia-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .pack-especial {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid #ffc107;
+        }
+        
+        .pack-especial h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .pack-especial p {
+            font-size: 1.2em;
+            color: #2d3748;
+        }
+        
+        /* FOOTER CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .urgencia {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero .subtitle { font-size: 1.2em; }
+            .section-title { font-size: 2em; }
+            .precio-principal { font-size: 3em; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-emoji">🤖📚✨</div>
+            <h1>Recupera 10+ Horas por Semana con IA</h1>
+            <p class="subtitle">Usa ChatGPT como tu asistente docente personal</p>
+            <p class="description">Planifica, evalúa y crea actividades en minutos, sin perder tu criterio pedagógico. La guía práctica que necesitas para enseñar mejor y trabajar menos.</p>
+            <a href="#comprar" class="cta-button">🚀 Quiero Ahorrar Tiempo Ahora</a>
+            <div class="price-tag">
+                <span class="price-old">$12.000</span>
+                <span class="price-new">$7.000</span>
+                ⚡ Oferta de lanzamiento
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="problema">
+        <div class="container">
+            <h2 class="section-title">¿Te sientes así cada día? 😰</h2>
+            <div class="problema-grid">
+                <div class="problema-card">
+                    <div class="problema-icon">⏰</div>
+                    <h3>Sin Tiempo</h3>
+                    <p>Pasas horas preparando clases, evaluaciones y actividades diferentes para cada nivel</p>
+                </div>
+                <div class="problema-card">
+                    <div class="problema-icon">😫</div>
+                    <h3>Agotamiento</h3>
+                    <p>Llegas a casa sin energía para tu familia o para ti mismo/a</p>
+                </div>
+                <div class="problema-card">
+                    <div class="problema-icon">📚</div>
+                    <h3>Tareas Repetitivas</h3>
+                    <p>Escribes lo mismo una y otra vez: planificaciones, consignas, reportes...</p>
+                </div>
+                <div class="problema-card">
+                    <div class="problema-icon">🎯</div>
+                    <h3>Estudiantes Diversos</h3>
+                    <p>Necesitas adaptar TODO para diferentes niveles y no alcanza el tiempo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIÓN -->
+    <section class="solucion">
+        <div class="container">
+            <h2 class="section-title">La Solución Está Aquí 💡</h2>
+            <div class="promesa-box">
+                <h3>🎯 Usa ChatGPT como asistente docente</h3>
+                <p>Delega las tareas operativas a la IA y recupera tu tiempo para lo que realmente importa: conectar con tus estudiantes y enseñar con pasión.</p>
+            </div>
+            <div class="promesa-box">
+                <h3>⚡ Planifica, evalúa y crea en minutos</h3>
+                <p>Lo que te tomaba 2-3 horas, ahora lo haces en 10-15 minutos. Sin perder calidad ni tu criterio pedagógico profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="beneficios">
+        <div class="container">
+            <h2 class="section-title">¿Qué lograrás con esta guía? 🌟</h2>
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">⏱️</div>
+                    <h3>Ahorra 10+ Horas Semanales</h3>
+                    <p>Automatiza planificaciones, evaluaciones y actividades. Dedica ese tiempo a tu vida personal o a mejorar tus clases.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🎓</div>
+                    <h3>Mantén tu Criterio Pedagógico</h3>
+                    <p>La IA sugiere, tú decides y adaptas. Aprenderás a revisar y personalizar todo para TU grupo específico.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🔧</div>
+                    <h3>Herramientas Prácticas</h3>
+                    <p>Prompts listos para copiar y pegar. Sin tecnicismos complicados. Resultados inmediatos desde el primer día.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">📊</div>
+                    <h3>Adapta a Diferentes Niveles</h3>
+                    <p>Crea versiones fácil, media y difícil de la misma actividad en minutos. Atiende la diversidad sin estrés.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">💰</div>
+                    <h3>100% Gratis Usar ChatGPT</h3>
+                    <p>No necesitas pagar suscripciones. Todo lo que enseñamos funciona con la versión gratuita de ChatGPT.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🛡️</div>
+                    <h3>Protege la Privacidad</h3>
+                    <p>Aprende a usar IA de forma ética y segura, protegiendo siempre los datos de tus estudiantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <section class="contenido">
+        <div class="container">
+            <h2 class="section-title">¿Qué incluye la guía? 📖</h2>
+            <div class="modulos">
+                <div class="modulo">
+                    <span class="modulo-numero">1</span>
+                    <h3>La Realidad Docente Actual</h3>
+                    <p>Por qué necesitas IA en tu práctica diaria sin culpa ni miedo</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">2</span>
+                    <h3>Qué ES y qué NO ES la IA</h3>
+                    <p>Desmitificamos la tecnología sin tecnicismos complicados</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">3</span>
+                    <h3>ChatGPT: Tutorial Completo</h3>
+                    <p>Desde crear tu cuenta hasta tus primeros resultados, paso a paso</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">4</span>
+                    <h3>5 Reglas de Oro</h3>
+                    <p>Cómo usar IA de forma ética, segura y pedagógicamente correcta</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">5</span>
+                    <h3>Prompts para Planificaciones</h3>
+                    <p>Crea clases completas en minutos con objetivos, actividades y evaluación</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">6</span>
+                    <h3>Prompts para Evaluaciones</h3>
+                    <p>Genera preguntas, rúbricas y consignas claras sin esfuerzo</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">7</span>
+                    <h3>Prompts por Área</h3>
+                    <p>Lengua, Matemática, Ciencias, Sociales, Arte - Todo cubierto</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">8</span>
+                    <h3>Adaptar a TU Grupo</h3>
+                    <p>Cómo personalizar todo lo que genera la IA para tu contexto específico</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">9</span>
+                    <h3>Errores Comunes</h3>
+                    <p>Qué NO hacer y cómo evitar los tropiezos típicos</p>
+                </div>
+                <div class="modulo">
+                    <span class="modulo-numero">🎁</span>
+                    <h3>BONUS: Biblioteca de Prompts</h3>
+                    <p>Decenas de prompts listos para copiar, pegar y usar HOY MISMO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen otros docentes 💬</h2>
+            <div class="testimonio-card">
+                <p class="testimonio-texto">"Antes me pasaba 3 horas preparando las planificaciones semanales. Ahora con los prompts de esta guía lo hago en 30 minutos. Recuperé mis tardes."</p>
+                <p class="testimonio-autor">- Mariana, maestra de 4to grado, Buenos Aires</p>
+            </div>
+            <div class="testimonio-card">
+                <p class="testimonio-texto">"Lo mejor es que NO necesitas ser experta en tecnología. Todo está explicado paso a paso. Empecé a usarlo el mismo día que compré la guía."</p>
+                <p class="testimonio-autor">- Roberto, profesor de secundaria, Córdoba</p>
+            </div>
+            <div class="testimonio-card">
+                <p class="testimonio-texto">"Finalmente puedo crear actividades diferenciadas para mis estudiantes con diferentes niveles. Ya no me siento culpable de no poder atender a todos."</p>
+                <p class="testimonio-autor">- Laura, maestra integradora, Rosario</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIO -->
+    <section class="precio" id="comprar">
+        <div class="container">
+            <h2 class="section-title">Inversión en tu bienestar docente 💎</h2>
+            <div class="precio-box">
+                <p style="font-size: 1.2em; margin-bottom: 10px;">Precio regular: <span style="text-decoration: line-through;">$12.000</span></p>
+                <p class="precio-principal">$7.000</p>
+                <p class="precio-descripcion">⚡ Oferta de lanzamiento<br>Acceso inmediato y de por vida</p>
+                <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20comprar%20la%20guía%20de%20IA%20para%20docentes%20por%20$7.000" class="cta-button" style="background: #25D366; color: white;">
+                    💬 Comprar por WhatsApp
+                </a>
+                <div class="garantia">
+                    <strong>✅ Acceso Instantáneo</strong><br>
+                    Recibes tu contraseña de acceso en menos de 5 minutos
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS -->
+    <section class="bonus">
+        <div class="container">
+            <h2 class="section-title">🎁 Bonos Incluidos (Sin costo extra)</h2>
+            <div class="bonus-grid">
+                <div class="bonus-item">
+                    <div class="bonus-icon">📝</div>
+                    <h3>+50 Prompts Listos</h3>
+                    <p>Copia, pega y usa desde hoy mismo</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">🔄</div>
+                    <h3>Actualizaciones Gratis</h3>
+                    <p>Cada vez que agregamos contenido, lo recibes sin costo</p>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon">💬</div>
+                    <h3>Soporte Directo</h3>
+                    <p>Preguntas por WhatsApp si tienes dudas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTRAS GUÍAS -->
+    <section class="otras-guias">
+        <div class="container">
+            <h2 class="section-title">📚 Otras Guías Disponibles</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 50px; color: #718096;">
+                Potencia tu enseñanza con nuestras guías especializadas
+            </p>
+            <div class="guias-grid">
+                <div class="guia-card">
+                    <div class="guia-icon">🎨</div>
+                    <h3>Genially para Docentes</h3>
+                    <p>Crea presentaciones interactivas, infografías y recursos visuales que cautiven a tus estudiantes</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Genially" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">🗺️</div>
+                    <h3>Miro para Educación</h3>
+                    <p>Organiza ideas, crea mapas mentales colaborativos y planifica proyectos visualmente</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Miro" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">📖</div>
+                    <h3>Diffit - Textos Adaptados</h3>
+                    <p>Adapta automáticamente textos a diferentes niveles de lectura para tus estudiantes</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Diffit" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">🎮</div>
+                    <h3>Wordwall - Juegos Educativos</h3>
+                    <p>Crea juegos interactivos, cuestionarios y actividades lúdicas en minutos</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Wordwall" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">📓</div>
+                    <h3>Notebooklm - Organización</h3>
+                    <p>Gestiona tu contenido educativo, notas y recursos en un solo lugar inteligente</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Notebooklm" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">🎯</div>
+                    <h3>Canva Educativo</h3>
+                    <p>Diseña materiales visuales profesionales sin ser diseñador gráfico</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Canva" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">✨</div>
+                    <h3>Quizizz y Kahoot</h3>
+                    <p>Gamifica tus evaluaciones y haz que tus estudiantes amen los exámenes</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Quizizz%20y%20Kahoot" class="guia-button">Más info</a>
+                </div>
+                
+                <div class="guia-card">
+                    <div class="guia-icon">🔊</div>
+                    <h3>Flippity y EduBlogs</h3>
+                    <p>Crea flashcards, líneas de tiempo y recursos didácticos interactivos gratuitos</p>
+                    <div class="guia-precio">$7.000</div>
+                    <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20la%20guía%20de%20Flippity" class="guia-button">Más info</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0; font-size: 1.3em; color: #667eea; font-weight: 600;">
+                💡 ¡Y muchas herramientas más disponibles!
+            </div>
+            
+            <div class="pack-especial">
+                <h3>🎁 PACK MEGA COMPLETO</h3>
+                <p style="font-size: 1.1em; margin-bottom: 15px;">Llévate TODAS las guías disponibles</p>
+                <p style="font-size: 0.95em; margin-bottom: 20px;">(IA + Genially + Miro + Diffit + Wordwall + Notebooklm + Canva + Quizizz/Kahoot + Flippity + más)</p>
+                <div style="margin: 20px 0;">
+                    <span style="text-decoration: line-through; opacity: 0.7; font-size: 1.3em;">$56.000+</span>
+                    <span style="font-size: 2.5em; font-weight: 900; margin-left: 15px; color: #2d3748;">$25.000</span>
+                </div>
+                <p style="margin-bottom: 30px; font-weight: 600;">💰 Ahorra más del 55% - Acceso de por vida a todo</p>
+                <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20el%20PACK%20MEGA%20COMPLETO%20de%20todas%20las%20guías%20por%20$25.000" class="cta-button" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    🚀 Quiero el Pack Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes ❓</h2>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Necesito pagar ChatGPT?</div>
+                <div class="faq-respuesta">No. Todo funciona con la versión gratuita de ChatGPT. No necesitas suscripciones adicionales.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Necesito saber de tecnología?</div>
+                <div class="faq-respuesta">Para nada. Si sabes usar WhatsApp, puedes usar esto. Todo está explicado paso a paso, sin tecnicismos.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Sirve para mi nivel educativo?</div>
+                <div class="faq-respuesta">Sí. La guía está diseñada tanto para primaria como secundaria. Los prompts se adaptan a cualquier grado.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Cómo recibo el material?</div>
+                <div class="faq-respuesta">Inmediatamente después de confirmar tu pago, recibes el link de acceso y tu contraseña personal por WhatsApp.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Puedo compartirlo con colegas?</div>
+                <div class="faq-respuesta">La licencia es personal e intransferible. Cada docente necesita su propia copia para recibir soporte y actualizaciones.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pregunta">¿Cuánto tiempo tengo acceso?</div>
+                <div class="faq-respuesta">De por vida. Compras una vez y accedes siempre, incluyendo todas las actualizaciones futuras.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <div class="urgencia">⏰ Esta oferta expira pronto</div>
+            <h2 class="section-title">Recupera tu tiempo. Recupera tu pasión por enseñar. 💚</h2>
+            <p style="font-size: 1.3em; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Imagina terminar tu jornada con energía. Imagina tener tiempo para innovar en tus clases. Imagina volver a disfrutar de tu vida fuera del aula.
+            </p>
+            <a href="https://wa.me/593435356168?text=Hola!%20Quiero%20comprar%20la%20guía%20de%20IA%20para%20docentes%20por%20$5.000" class="cta-button" style="background: white; color: #f5576c;">
+                🚀 Sí, Quiero Ahorrar Tiempo Ahora
+            </a>
+        </div>
+    </section>
+    
+    <!-- CONTACTO WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/593435356168?text=Hola!%20Tengo%20una%20consulta%20sobre%20las%20guías" 
+       class="whatsapp-float" 
+       target="_blank">
+        <span style="font-size: 40px;">💬</span>
+    </a>
+    
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+        
+        @keyframes pulse-whatsapp {
+            0%, 100% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5); }
+            50% { box-shadow: 0 5px 30px rgba(37, 211, 102, 0.8); }
+        }
+    </style>
+
+</body>
+</html>
