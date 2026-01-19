@@ -932,10 +932,14 @@
     </section>
     
     <!-- CONTACTO WHATSAPP FLOTANTE -->
-    <a href="https://wa.me/593435356168?text=Hola!%20Tengo%20una%20consulta%20sobre%20las%20guías" 
-       class="whatsapp-float" 
-       target="_blank">
-        <span style="font-size: 40px;">💬</span>
+    <a href="https://wa.me/593435356168?text=Hola!%20Tengo%20una%20consulta%20sobre%20las%20guías"
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Contactar por WhatsApp">
+    
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+             alt="WhatsApp"
+             style="width: 38px; height: 38px;">
     </a>
     
     <style>
@@ -954,18 +958,20 @@
             z-index: 1000;
             transition: all 0.3s ease;
             animation: pulse-whatsapp 2s ease-in-out infinite;
+            text-decoration: none;
         }
-        
+    
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
         }
-        
+    
         @keyframes pulse-whatsapp {
             0%, 100% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5); }
             50% { box-shadow: 0 5px 30px rgba(37, 211, 102, 0.8); }
         }
     </style>
+
 
 </body>
 </html>
